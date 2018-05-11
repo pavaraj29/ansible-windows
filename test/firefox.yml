@@ -1,0 +1,8 @@
+---
+- name: install firefox with ansible
+  hosts: all
+  tasks:
+    - name: Install Firefox
+      win_chocolatey:
+        name: firefox
+        state: present

@@ -1,0 +1,20 @@
+---
+- hosts: windows
+  tasks:
+  - name: Ensure user bob is present
+    win_user:
+     name: testuser
+     password: "{{ user_pwd }}"
+     state: present
+     groups:
+       - Users
+  - name: add identity to apppool
+  win_iis_webapppool:
+    name: DefaultAppPool
+    state: started
+    attributes:
+      managedPipelineMode: Classic
+      processModel.identityType: SpecificUser
+      processModel.userName: iisuser
+      processModel.password: '{{ user_pwd }}'
+      processModel.loadUserProfile: True

@@ -1,0 +1,12 @@
+---
+- hosts: windows
+  tasks:
+  - name: Windows | Install Powershell 5.0
+    win_chocolatey:
+     name: "powershell"
+    register: check_powershell5
+    become: yes
+    become_user: devops
+    become_method: runas
+    retries: 3
+    delay: 10

@@ -1,0 +1,20 @@
+---
+#- hosts: windows
+#  tasks:
+#  - name: copy-testscript
+#    win_copy:
+#      src: files/installsql.ps1
+#      dest: "C:\\test\\installsql.ps1"
+
+#  - name: execute-testscript
+#    win_shell: C:\test\installsql.ps1
+
+- hosts: windows
+  tasks:
+  - name: Install application and override expected return codes
+    win_package:
+      path: C:\mssql\setup.exe
+      product_id: ''
+      arguments: '/q /ACTION=Install /FEATURES=SQL /INSTANCENAME=MSSQLSERVER51 /SQLSVCACCOUNT="devops" /SQLSVCPASSWORD="Password@123" /SQLSYSADMINACCOUNTS="devops" /AGTSVCACCOUNT="NT AUTHORITY\Network Service" /UpdateEnabled=False /IACCEPTSQLSERVERLICENSETERMS'
+      state: present
+      expected_return_code: [0, 666, 3010]

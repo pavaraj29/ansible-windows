@@ -1,0 +1,6 @@
+---
+- hosts: windows
+  tasks:
+  - name: reboot machine
+    win_reboot:
+      reboot_timeout: 1000
