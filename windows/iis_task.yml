@@ -1,0 +1,5 @@
+---
+- hosts: windows
+  roles:
+     - install_iis
+     - configure_iis
