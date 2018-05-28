@@ -1,0 +1,9 @@
+---
+# tasks file for mssql_install
+- name: mssql installation
+  script: files/mssql_install.ps1 MSSQLSERVER51 devops
+  tags: mssql
+
+- name: ssms installation
+  script: files/SSMS.ps1
+  tags: ssms

@@ -1,0 +1,5 @@
+---
+# tasks file for create_db
+- name: mssql installation
+  script: files/create_db.ps1 MSSQLSERVER51 devopsdb1
+  tags: createdb
