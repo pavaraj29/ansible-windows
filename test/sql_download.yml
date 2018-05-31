@@ -1,0 +1,5 @@
+---
+- hosts: windows
+  tasks:
+  - name: download mssql
+    script: files/sql_download.ps1
